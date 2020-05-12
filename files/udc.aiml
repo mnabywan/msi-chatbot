@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<category>
+<pattern>Czesc</pattern>
+<template>Witaj.</template>
+</category>
+<category>
+<pattern>Dzien dobry</pattern> 
+<template><srai>Czesc</srai></template>
+</category>
+<category>
+<pattern>Witaj</pattern> 
+<template><srai>Czesc</srai></template>
+</category>
+<category>
+<pattern>Dobry wieczor</pattern> 
+<template><srai>Czesc</srai></template>
+</category>
+
+<category>
+<pattern>Jaka firme reprezentujesz</pattern>
+<template>Reprezentuje firme 11 bit Studios.</template>
+</category>
+<category>
+<pattern>Z jakiej jestes firmy</pattern> 
+<template><srai>Jaka firme reprezentujesz</srai></template>
+</category>
+
+<category>
+<pattern>Kiedy powstala</pattern>
+<template>Firma zostala zalozona w roku 2010.</template>
+</category>
+<category>
+<pattern>W ktorym roku * </pattern>
+<template><srai>Kiedy <star/></srai></template>
+</category>
+
+<category>
+<pattern>Gdzie miesci sie firma</pattern>
+<template>Firma ma siedzibe w Warszawie.</template>
+</category>
+<category>
+<pattern>Gdzie znajduje sie siedziba firmy</pattern>
+<template><srai>Gdzie miesci sie firma</srai></template>
+</category>
+
+<category>
+<pattern>cel firmy</pattern>
+<template>Tworzymy </template>
+</category>
+<category>
+<pattern>produkt firmy</pattern>
+<template></template>
+</category>
+<category>
+<pattern>Co stanowi *</pattern>
+<template><srai><star/></srai>gry komputerowe.</template>
+</category>
+
+<category>
+<pattern>sztuka</pattern> 
+<template>Gry to Sztuka!</template>
+</category>
+<category>
+<pattern>_ sztuka</pattern> 
+<template><srai>sztuka</srai></template>
+</category>
+<category>
+<pattern>sztuka _</pattern>
+<template><srai>sztuka</srai></template>
+</category>
+<category>
+<pattern>_ sztuka *</pattern>
+<template><srai>sztuka</srai></template>
+</category>
+
+<category>
+<pattern>Ile osob zatrudnia firma</pattern>
+<template>Okolo trzydziestu.</template>
+</category>
+<category>
+<pattern>Tylko tyle</pattern>
+<that>Okolo trzydziestu</that>
+<template>Tak, wierzymy, ze mniejszy zespol jest w stanie lepiej kontrolowac produkt.</template>
+</category>
+<category>
+<pattern>Tylko tyle</pattern>
+<template>Tak wyszlo.</template>
+</category>
+
+<category>
+<pattern>Ile gier zrobila firma</pattern>
+<template>Wydalismy do tej pory szesc tytulow.</template>
+</category>
+<category>
+<pattern>Jakie to tytuly</pattern>
+<that>Wydalismy do tej pory szesc tytulow</that>
+<template>Anomaly: Warzone Earth, Funky Smugglers, Sleepwalker's Journey, Anomaly: Korea, Anomaly 2 i This War of Mine.</template>
+</category>
+
+<category>
+<pattern>Jakie gry stworzyla firma</pattern>
+<template>Anomaly: Warzone Earth, Funky Smugglers, Sleepwalker's Journey, Anomaly: Korea, Anomaly 2 i This War of Mine.</template>
+</category>
+
+<category>
+<pattern>Bardzo lubie gre *</pattern>
+<template>Za co?</template>
+</category>
+<category>
+<pattern>*</pattern>
+<that>Za co</that>
+<template>
+<set name="To"><star/></set> bylo wazne podczas produkcji tej gry. '<get name="To"/>' to czesto slyszana przez nas opinia.
+</template>
+</category>
+
+<topic name="ANOMALY">
+<category>
+<pattern>Anomaly Warzone Earth</pattern>
+<template><think><set name="topic">WARZONE</set></think>W porzadku, porozmawiajmy o Anomaly: Warzone Earth.</template>
+</category>
+<category>
+<pattern>Anomaly Korea</pattern>
+<template><think><set name="topic">KOREA</set></think>W porzadku, porozmawiajmy o Anomaly: Korea.</template>
+</category>
+<category>
+<pattern>Anomaly 2</pattern>
+<template><think><set name="topic">SEQUEL</set></think>W porzadku, porozmawiajmy o Anomaly 2.</template>
+</category>
+<category>
+<pattern>Zadnej z nich</pattern>
+<template><think><set name="topic">*</set></think>W porzadku, nie rozmawiajmy o Anomaly.</template>
+</category>
+<category>
+<pattern>*</pattern>
+<template>Ale o ktorej grze chcesz porozmawiac?</template>
+</category>
+</topic>
+<category>
+<pattern>Porozmawiajmy o Anomaly</pattern>
+<template><think><set name="topic">ANOMALY</set></think>
+<random>
+<li>Anomaly: Warzone Earth?</li>
+<li>Anomaly: Korea?</li>
+<li>Anomaly 2?</li>
+</random>
+</template>
+</category>
+
+<category>
+<pattern>Porozmawiajmy o This War of Mine</pattern>
+<template><think><set name="topic">THISWAR</set></think>
+Jasne. Co chcesz wiedziec?
+</template>
+</category>
+
+<topic name="WARZONE">
+<category>
+<pattern>Jaki to rodzaj gry</pattern>
+<template>Odwrocony tower defense.</template>
+</category>
+<category>
+<pattern>Jak jest oceniana</pattern>
+<template>Srednio 8/10.</template>
+</category>
+<category>
+<pattern>Dlaczego ta gra jest dla firmy wazna</pattern>
+<template>Jest to nasza pierwsza gra, a zarazem jedna z najlepiej ocenianych. Dzieki niej bylismy w stanie tworzyc kolejne.</template>
+</category>
+<category>
+<pattern>Na jakie platformy zostala wydana</pattern>
+<template>Windows, Mac OS X, Linux, iOS, Android, Xbox 360, PlayStation 3.</template>
+</category>
+<category>
+<pattern>*</pattern>
+<template>Nie rozumiem. Chcesz przestac rozmawiac o Anomaly: Warzone Earth?
+<think><set name="topic">WKOLO</set></think>
+</template>
+</category>
+</topic>
+
+<topic name="KOREA">
+<category>
+<pattern>Jaki to rodzaj gry</pattern>
+<template>Odwrocony tower defense.</template>
+</category>
+<category>
+<pattern>Jak ma sie ta gra do Anomaly: Warzone Earth</pattern>
+<template>Jest to dodatek.</template>
+</category>
+<category>
+<pattern>Czy ta gra takze odniosla sukces</pattern>
+<template>Gra osiagnela gorsze wyniki niz pierwsza czesc, jednak pozwolila przetestowac rozwiazania wykorzystane w pelnoprawnej kontynuacji.</template>
+</category>
+<category>
+<pattern>Na jakie platformy zostala wydana</pattern>
+<template>Windows, Mac OS X, Linux, iOS, Android, Xbox 360, PlayStation 3.</template>
+</category>
+<category>
+<pattern>*</pattern>
+<template>Nie rozumiem. Chcesz przestac rozmawiac o Anomaly: Korea?
+<think><set name="topic">WKOLO2</set></think>
+</template>
+</category>
+</topic>
+
+<topic name="SEQUEL">
+<category>
+<pattern>Jaki to rodzaj gry</pattern>
+<template>Odwrocony tower defense.</template>
+</category>
+<category>
+<pattern>Jak jest oceniana</pattern>
+<template>Umiarkowanie dobrze.</template>
+</category>
+<category>
+<pattern>Dlaczego ta gra jest dla firmy wazna</pattern>
+<template>Stanowi kontynuacje naszej gry, ktora odniosla najwiekszy sukces. Do sprawdzonej formuly dodalismy kilka nowosci.</template>
+</category>
+<category>
+<pattern>Na jakie platformy zostala wydana</pattern>
+<template>Windows, Mac OS X, Linux, iOS, Android, Xbox 360, PlayStation 3.</template>
+</category>
+<category>
+<pattern>*</pattern>
+<template>Nie rozumiem. Chcesz przestac rozmawiac o Anomaly 2?
+<think><set name="topic">WKOLO3</set></think>
+</template>
+</category>
+</topic>
+
+<topic name="THISWAR">
+<category>
+<pattern>Jaki to rodzaj gry</pattern>
+<template>Troche survival, troche strategia... To taki gatunkowy mix.</template>
+</category>
+<category>
+<pattern>Jak jest oceniana</pattern>
+<template>Gra przyjela sie znakomicie i jest naszym najwiekszym sukcesem. Zbiera pochlebne opinie na calym swiecie.</template>
+</category>
+<category>
+<pattern>Dlaczego ta gra jest dla firmy wazna</pattern>
+<template>Jest to nasz najwiekszy sukces dotychczas. Gra zostala zauwazona na prawie calym swiecie.</template>
+</category>
+<category>
+<pattern>Co wyjatkowego jest w tej grze</pattern>
+<template>Opowiada o tragedii wojny z perspektywy grupy cywilow, ktorzy za wszelka cene staraja sie przetrwac.</template>
+</category>
+<category>
+<pattern>Na jakie platformy zostala wydana</pattern>
+<template>Windows, Mac OS X, Linux.</template>
+</category>
+<category>
+<pattern>*</pattern>
+<template>Nie rozumiem. Chcesz przestac rozmawiac o This War of Mine?
+<think><set name="topic">WKOLO4</set></think>
+</template>
+</category>
+</topic>
+
+<topic name="WKOLO">
+<category>
+<pattern>*</pattern>
+<template>
+<think><set name="var"><uppercase><star /></uppercase></set></think>
+<condition>
+<li name="var" value="TAK">
+W porzadku.
+<think><set name="topic">*</set></think>
+</li>
+<li name="var" value="NIE">
+To co chcesz wiedziec?
+<think><set name="topic">WARZONE</set></think>
+</li>
+<li>Tak czy nie ?</li>
+</condition>
+</template>
+</category>
+</topic>
+
+<topic name="WKOLO2">
+<category>
+<pattern>*</pattern>
+<template>
+<think><set name="var"><uppercase><star /></uppercase></set></think>
+<condition>
+<li name="var" value="TAK">
+W porzadku.
+<think><set name="topic">*</set></think>
+</li>
+<li name="var" value="NIE">
+To co chcesz wiedziec?
+<think><set name="topic">KOREA</set></think>
+</li>
+<li>Tak czy nie ?</li>
+</condition>
+</template>
+</category>
+</topic>
+
+<topic name="WKOLO3">
+<category>
+<pattern>*</pattern>
+<template>
+<think><set name="var"><uppercase><star /></uppercase></set></think>
+<condition>
+<li name="var" value="TAK">
+W porzadku.
+<think><set name="topic">*</set></think>
+</li>
+<li name="var" value="NIE">
+To co chcesz wiedziec?
+<think><set name="topic">SEQUEL</set></think>
+</li>
+<li>Tak czy nie ?</li>
+</condition>
+</template>
+</category>
+</topic>
+
+<topic name="WKOLO4">
+<category>
+<pattern>*</pattern>
+<template>
+<think><set name="var"><uppercase><star /></uppercase></set></think>
+<condition>
+<li name="var" value="TAK">
+W porzadku.
+<think><set name="topic">*</set></think>
+</li>
+<li name="var" value="NIE">
+To co chcesz wiedziec?
+<think><set name="topic">THISWAR</set></think>
+</li>
+<li>Tak czy nie ?</li>
+</condition>
+</template>
+</category>
+</topic>
+
+<category>
+<pattern>*</pattern>
+<template>Nie znam odpowiedzi na to pytanie.</template>
+</category>
+
+
+
+</aiml>

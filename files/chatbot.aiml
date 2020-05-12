@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+ 
+ 
+ <!-- Bot odpowiada na pytania związane ze sklepem rowerowym Roweromania.
+Wykorzystane konstrukcje:
+- synonimy
+- redukcja symboliczna
+- fragmentacja wzorców
+- kontekst topic
+- losowanie
+- słowa kluczowe
+- wyrażenia warunkowe -->
+
+ 
+    
+    <category>
+        <pattern>Czesc</pattern>
+        <template>Czesc! W czym moge pomoc?</template>
+    </category>
+    <category>
+        <pattern>Dzien dobry</pattern>
+        <template><srai>Czesc</srai></template>
+    </category>
+    <category>
+        <pattern>Witam</pattern>
+        <template><srai>Czesc</srai></template>
+    </category>
+    <category>
+        <pattern>Dobry wieczor</pattern>
+        <template><srai>Czesc</srai></template>
+    </category>
+
+    <category>
+        <pattern>Jaka firme reprezentujesz</pattern>
+        <template>Reprezentuje firme Roweromania</template>
+    </category>
+    <category>
+        <pattern>Co to za firma</pattern>
+        <template><srai>Jaka firme reprezentujesz</srai></template>
+    </category>
+        
+
+    <category>
+        <pattern>W ktorym roku powstala firma</pattern>
+        <template>Roweromania powstala w roku 2015</template>
+    </category>
+    <category>
+        <pattern> Powiedz mi * </pattern>
+        <template>Nasza firma <srai> <star/></srai></template>
+    </category>
+
+    <category>
+        <pattern>Czym zajmuje sie wasza firma</pattern>
+        <template>Jestesmy profesionalnym sklepem rowerowym, sprzedajemy sprzet najwyzszej jakosci,
+        dokonujemy także napraw. Od niedawana jest mozliwe przeprowadzenie bike fittingu</template>
+    </category>
+    <category>
+        <pattern>Co robi wasza firma</pattern> 
+        <template><srai>Czym zajmuje sie wasza firma</srai></template>
+    </category>
+    
+    
+    <category>
+    <pattern>Kontakt</pattern> 
+        <template>Nasz telefon to 123 456 789. Mozesz sie skontaktowac 
+        takze przez naszego maila kontakt@roweromania.pl</template>
+    </category>
+    <category>
+        <pattern>_ kontakt</pattern> 
+        <template><srai>kontakt</srai></template>
+    </category>
+    <category>
+        <pattern>kontakt _</pattern>
+        <template><srai>kontakt</srai></template>
+    </category>
+    <category>
+        <pattern>_ kontakt *</pattern>
+        <template><srai>kontakt</srai></template>
+    </category>
+    
+    
+    <category>
+        <pattern>Mam pytanie</pattern>
+        <template>            
+            <think><set name = "topic">WKOLO</set></think>
+            Jasne, sluzymy pomoca
+        </template>
+    </category>
+    
+    <category>
+        <pattern>Czy szukacie osob do pracy</pattern>
+        <template>
+            <think><set name = "topic">PRACA</set></think>
+            Tak, szukamy osoby do naszego sklepu
+        </template>
+    </category>
+    
+    
+    <topic name="PRACA">
+    <category>
+        <pattern>Czy to pelny etat</pattern>
+        <template>Tak to pelny etat</template>
+    </category>
+    <category>
+        <pattern>Co bedzie nalezalo do moich obowiazkow</pattern>
+        <template>
+            <random>
+            <li>Obsługa klientow</li>
+            <li>Skadanie zamowien</li>
+            <li>Obsluga fanpage</li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>* cos jeszcze</pattern> 
+        <template><srai>Co bedzie nalezalo do moich obowiazkow</srai></template>
+    </category>
+    <category>
+        <pattern>* co jeszcze</pattern> 
+        <template><srai>Co bedzie nalezalo do moich obowiazkow</srai></template>
+    </category>
+    <category> 
+        <pattern>Ile oferujecie</pattern>
+        <template>3000 brutto. Czy jestes zainteresowany?</template>
+    </category>
+    
+     <category>
+        <pattern>Mam inne pytanie</pattern>
+        <template>            
+            <think><set name = "topic">WKOLO</set></think>
+            Jasne, sluzymy pomoca
+        </template>
+    </category>
+    
+    <category>
+        <pattern>*</pattern>
+        <template>
+            <think><set name="var"><uppercase><star/></uppercase></set></think>
+        <condition>
+            <li name="var" value="TAK">
+            Bardzo nas to cieszy! Wyslij CV na adres rekrutacja@roweromania.pl
+            </li>
+            <li name="var" value="NIE">
+            Szkoda! Gdybys jednak zmienil zdanie wyslij CV na adres rekrutacja@roweromania.pl
+            </li>
+            <li>Czy jestes zainteresowany praca u nas</li>
+        </condition>
+        </template>
+    </category>
+    </topic>
+    
+    
+    <topic name="WKOLO">
+    <category>
+        <pattern>Produkty</pattern> 
+        <template>Oferujemy rowery szosowe, triathlonowe, MTB. Sprzedajemy takze kaski</template>
+    </category>
+    <category>
+        <pattern>Szosowe</pattern>
+        <template>  
+            <think><set name = "topic">SZOSOWE</set></think>
+            Jakie masz pytania odnosnie rowerow szosowych?
+        </template>
+    </category>
+    <category>
+        <pattern>Triathlonowe</pattern>
+        <template>  
+            <think><set name = "topic">TRI</set></think>
+            Jakie masz pytania odnosnie rowerow triathlonowych?
+        </template>
+    </category>
+    <category>
+        <pattern>Kaski</pattern>
+        <template>  
+            <think><set name = "topic">KASKI</set></think>
+            Jakie masz pytania odnosnie kaskow?
+        </template>
+    </category>
+    </topic>
+    
+    <topic name="SZOSOWE">
+        <category>
+            <pattern>Informacje</pattern>
+            <template>Rowery szosowe to rowery przystosowane to jazdy po asfalcie. Sa idealne zarowno do sportu jak i do 
+            wielogodzinnych wycieczek. 
+            </template>
+        </category>
+        <category>
+            <pattern>Jakich marek rowery macie</pattern>
+            <template>Oferujemy rowery marek Specialized, Trek oraz Bianchi</template>
+        </category>
+        <category>
+            <pattern>* cena</pattern>
+            <template>W zaleznosci od modelu mamy rowery szosowe w cenach od 2000 do 40000. Szczegolowa oferte zobacz 
+            w zakladce rowery szosowe
+            </template>
+        </category>
+        <category>
+            <pattern>Mam inne pytanie</pattern> 
+            <template>            
+            <think><set name = "topic">WKOLO</set></think>
+            Jasne, sluzymy pomoca
+            </template>
+        </category>
+        <category>
+            <pattern>*</pattern>
+            <template>Masz jakies pytanie odnosnie rowerow szosowych?</template>
+        </category>
+    </topic>
+    
+    
+    <topic name="TRI">
+        <category>
+            <pattern>Informacje</pattern>
+            <template>Rowery triathlonowe sa przystosowane do etapu rowerowego triathlonu. Cechy charakterystyczne to wyzsza 
+            aerodynamika, specjalny bidon, lemondki.
+            </template>
+        </category>
+        <category>
+            <pattern>Jakie sa roznice miedzy nim a rowerem szosowym</pattern>
+            <template>Rowery triathlonowe to roery TT ktore nie sa dopuszczone do zawodow kolarskich przez TT. Pozwalaja na uzyskiwanie 
+            jak najlepszych wynikow w triathlonie dzieki m.in. innej geometrii.
+            </template>
+        </category>
+        <category>
+            <pattern>Jakich marek rowery macie</pattern>
+            <template>Oferujemy rowery marek Specialized, Canyon oraz Trek</template>
+        </category>
+        <category>
+            <pattern>* cena</pattern>
+            <template>W zaleznosci od modelu mamy rowery triathlonowe w cenach od 10000 do 60000. Szczegolowa oferte zobacz 
+            w zakladce rowery triathlonowe
+            </template>
+        </category>
+        <category>
+            <pattern>Mam inne pytanie</pattern> 
+            <template>            
+            <think><set name = "topic">WKOLO</set></think>
+            Jasne, sluzymy pomoca
+            </template>
+        </category>
+        <category>
+            <pattern>*</pattern>
+            <template>Masz jakies pytanie odnosnie rowerow triathlonowych?</template>
+        </category>
+    </topic>
+    
+
+    <topic name="Kaski">
+        <category>
+            <pattern>Informacje</pattern>
+            <template>Kask to podstawowe wyposażenie każdego rowerzysty. Zwieksza bezpieczenstwo. Mamy w ofercie kaski zwykle jak i aero.
+            </template>
+        </category>
+        <category>
+            <pattern>* cena</pattern>
+            <template>W zaleznosci od modelu mamy kaski w cenach od 100 do 1000. Szczegolowa oferte zobacz 
+            w zakladce Kaski.
+            </template>
+        </category>
+        <category>
+            <pattern>Jaki kask wybrac</pattern>
+            <template>Radzimy zmierzyc obwod glowy i sprawdzic w rozmiarowce w zakladce kaski/rozmiary. Pamietaj ze kask 
+            to element ktory moze uratowac Ci zycie dlatego musi byc odpowiednio dopasowany. Nie warto na tym oszczedzac</template>
+        </category>
+        
+        <category>
+            <pattern>Mam inne pytanie</pattern> 
+            <template>            
+            <think><set name = "topic">WKOLO</set></think>
+            Jasne, sluzymy pomoca
+            </template>
+        </category>
+        <category>
+            <pattern>*</pattern>
+            <template>Masz jakies pytanie odnosnie kaskow?</template>
+        </category>
+    </topic>
+    
+</aiml>
+
+
